@@ -123,6 +123,8 @@ Scene_T *LoadAscii3D(const char *fname)
         if (stricmp(ClassName,"OmniLight3D")==0)
         {
             char *nxt = strtok(NULL,",");
+            // uint32_t = (uint32_t)strtol(&nxt[1], NULL, 16);
+            // nxt is $RRGGBBAA hex value 
         }
     }
     return scene;
