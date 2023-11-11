@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://n44d53us24uu"]
+
+[ext_resource type="Script" path="res://addons/ascii_export/simple_ascii_export.gd" id="1_ev166"]
+
+[node name="Simple Ascii Export Plugin" type="Panel"]
+offset_left = 18.0
+offset_top = 50.0
+offset_right = 238.0
+offset_bottom = 114.0
+scale = Vector2(0.985981, 0.844575)
+script = ExtResource("1_ev166")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = 5.92014
+offset_right = 104.35
+offset_bottom = -7.80986
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Save Ascii Scene"
+
+[node name="SaveMaterialDialog" type="FileDialog" parent="."]
+size = Vector2i(392, 159)
+visible = true
+filters = PackedStringArray("*.ascii")
+
+[node name="LoadMaterialDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.silly_mat")
