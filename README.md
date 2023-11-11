@@ -3,6 +3,10 @@ Export a scene from Godot into an easier to parse ascii format
 
 Copy into your Godot project. ( keep addons/ascii_export filepath ) 
 
+THIS ISN'T A COMPLETE SOLUTION. I'm hoping it's hackable enough to get what you need quickly and modify it to fit your wants.
+
+
+
 file contains one line per "thing" 
 
 first Resources. which are simply pathnames for 3d models 
