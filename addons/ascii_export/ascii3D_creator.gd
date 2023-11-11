@@ -1,16 +1,16 @@
 @tool
 extends Panel
+
 var editor_interface
 
 func _ready():
 	# Connect all of the signals we'll need to save and load silly materials.
-	get_node(^"VBoxContainer/SaveButton").pressed.connect(self.save_pressed)
-	get_node(^"SaveMaterialDialog").file_selected.connect(self.save_file_selected)
+	get_node(^"SaveButton").pressed.connect(self.save_pressed)
+	get_node(^"SaveAscii3DDialog").file_selected.connect(self.save_file_selected)
 	RenderingServer.canvas_item_set_clip(get_canvas_item(), true)
 
 func save_pressed():
-	print("save Pressed")
-	get_node(^"SaveMaterialDialog").popup_centered()
+	get_node(^"SaveAscii3DDialog").popup_centered()
 
 func _add_node_data(node,node_list,resource_list, resource_check_dict):
 	if node.get_class()=="Node3D":
@@ -32,28 +32,30 @@ func _add_node_data(node,node_list,resource_list, resource_check_dict):
 		_add_node_data(child_node,node_list,resource_list, resource_check_dict);
 
 func save_file_selected(path):
-	print("save Pressed" + path)
 	var resource_list = [];
 	var resource_check_dict = {};
 	var node_list = [];
+	#open file 
+	var file = FileAccess.open(path, FileAccess.WRITE)
+
 	# get root
 	var scene_root = get_tree().root.get_child(get_tree().root.get_child_count()-1);
 	# collect scene
 	_add_node_data(scene_root,node_list,resource_list, resource_check_dict)
-	
-#	var silly_resource = _silly_resource_from_values()
-	# Make a file, store the silly material as a JSON string.
-	var file = FileAccess.open(path, FileAccess.WRITE)
+
+	# make a string of everything 	
 	var content = ""
 	# all resources 
 	content += "resources:" + str(resource_list.size()) + "\n"
 	for r in resource_list:
 		var fpath = r.trim_prefix("res://")
 		var some_array = fpath.split(":", true, 1)
-#		print(some_array[0])
 		content += some_array[0] + "\n"
+
 	# all nodes	
 	content += "nodes:" + str(node_list.size()) + "\n"
+	# ClassName , NodeName, ParentName, ResourceID ( -1 if no mesh ), 3x4 floats matrix 
+
 	for n in node_list:
 		var s = ""
 		var t = n.get_transform()
@@ -91,6 +93,8 @@ func save_file_selected(path):
 		s += str(t.origin.y)
 		s += ","
 		s += str(t.origin.z)
+
+		# if we're a light we add some stuff TBD 
 		if n.get_class() == "OmniLight3D":
 			var col = n.get_color()
 			s += ",$"
@@ -104,4 +108,3 @@ func save_file_selected(path):
 	file.store_string(content)
 	file = null
 	return true
-

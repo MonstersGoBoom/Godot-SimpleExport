@@ -11,13 +11,12 @@
 @tool
 extends EditorPlugin
 
-var io_toascii_dialog
+var io_material_dialog
 
 func _enter_tree():
-	io_toascii_dialog = preload("res://addons/ascii_export/dock.tscn").instantiate()
-	io_toascii_dialog.editor_interface = get_editor_interface()
-	add_control_to_dock(DOCK_SLOT_LEFT_UL, io_toascii_dialog)
-
+	io_material_dialog = preload("res://addons/ascii_export/ascii_dock.tscn").instantiate()
+	io_material_dialog.editor_interface = get_editor_interface()
+	add_control_to_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_MENU,io_material_dialog)
 
 func _exit_tree():
-	remove_control_from_docks(io_toascii_dialog)
+	remove_control_from_docks(io_material_dialog)
