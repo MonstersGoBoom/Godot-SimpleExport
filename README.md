@@ -18,7 +18,7 @@ then
 
 ```
 nodes:<int>
-ClassName , NodeName , ParentName , Resource ID , 3*4 floats for matrix
+ClassName , NodeName , ParentName , Resource ID , 12 floats for a 3x4 matrix
 
 eg. 
 MeshInstance3D,rock_B,rock_B2,37,1,0,0,0,1,0,0,0,1,0,0,0
@@ -28,8 +28,8 @@ NOTES:
 
 ResourceID of -1 indicates there's no 3D model for this Node. 
 
-all matrices are in local space. 
-when rendering you need to reference the parent node worldMatrix and multiply the local and parent world together. 
+ALL matrices are in local space. 
+When rendering you need to reference the parent node worldMatrix and multiply the local and parent world together. 
 
 will post a simple example.
 
