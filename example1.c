@@ -5,19 +5,15 @@ typedef struct
 {
     int     ReferenceCount;
     char    *Name;
-
     Model   ModelResource;
 } Resource_t;
 
 typedef struct Node_t
 {
     char            *Name;
-
     int             ResourceIndex;
-
     Matrix          localMatrix;
     Matrix          worldMatrix;
-
     struct Node_t   *Parent;
 
 } Node_t;
@@ -96,7 +92,6 @@ Scene_T *LoadAscii3D(const char *fname)
 
         fgets(linebuffer,sizeof(linebuffer),fp);
         linebuffer[strlen(linebuffer)-1]=0;
-        printf("<%s>\n",linebuffer);
 
         char *ClassName = strtok(linebuffer,",");
         char *NodeName =  strtok(NULL,",");
@@ -129,9 +124,7 @@ Scene_T *LoadAscii3D(const char *fname)
         {
             char *nxt = strtok(NULL,",");
         }
-
     }
-
     return scene;
 }
 
