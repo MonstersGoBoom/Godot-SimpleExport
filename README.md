@@ -22,5 +22,9 @@ eg.
 MeshInstance3D,rock_B,rock_B2,37,1,0,0,0,1,0,0,0,1,0,0,0
 ```
 
+note ResourceID of -1 indicates there's no 3D model for this Node. 
+
+
+
 
 
