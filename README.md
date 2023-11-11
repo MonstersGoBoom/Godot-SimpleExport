@@ -3,6 +3,14 @@ Export a scene from Godot into an easier to parse ascii format
 
 Copy into your Godot project. ( keep addons/ascii_export filepath ) 
 
+you should see this, with the scene you want exporting ( NOTE all child scenes are included ) 
+
+
+
+![ScreenShot](https://github.com/MonstersGoBoom/Godot-SimpleExport/blob/main/images/installed.png)
+
+
+
 THIS ISN'T A COMPLETE SOLUTION. I'm hoping it's hackable enough to get what you need quickly and modify it to fit your wants.
 
 
