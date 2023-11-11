@@ -31,6 +31,10 @@ ResourceID of -1 indicates there's no 3D model for this Node.
 all matrices are in local space. 
 when rendering you need to reference the parent node worldMatrix and multiply the local and parent world together. 
 
+will post a simple example.
+
+
+
 
 
 
